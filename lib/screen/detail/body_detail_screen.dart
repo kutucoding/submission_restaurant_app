@@ -15,7 +15,6 @@ class BodyDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-          
             Hero(
               tag: restaurant.pictureId,
               child: Image.network(
@@ -25,7 +24,6 @@ class BodyDetailScreen extends StatelessWidget {
                 height: screenHeight * 0.4,
               ),
             ),
-        
             Padding(
               padding: EdgeInsets.only(top: screenHeight * 0.35),
               child: Container(
@@ -34,7 +32,6 @@ class BodyDetailScreen extends StatelessWidget {
                   color: Theme.of(context).colorScheme.secondary,
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(30),
-                    
                   ),
                 ),
                 child: Padding(
@@ -42,7 +39,6 @@ class BodyDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Restaurant Name
                       Text(
                         restaurant.name,
                         style: Theme.of(context).textTheme.headlineLarge,
@@ -55,8 +51,6 @@ class BodyDetailScreen extends StatelessWidget {
                             ?.copyWith(fontWeight: FontWeight.w400),
                       ),
                       const SizedBox(height: 15),
-
-                      // Description Section
                       Text(
                         "Description",
                         style: Theme.of(context).textTheme.headlineSmall,
@@ -67,8 +61,6 @@ class BodyDetailScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                       const SizedBox(height: 12),
-
-                      // Categories Section
                       Text(
                         "Categories",
                         style: Theme.of(context).textTheme.headlineSmall,
@@ -103,15 +95,11 @@ class BodyDetailScreen extends StatelessWidget {
                             .toList(),
                       ),
                       const SizedBox(height: 12),
-
-                      // Menus Section
                       Text(
                         "Menus",
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const SizedBox(height: 12),
-
-                      // Foods Section
                       Text(
                         "Foods",
                         style: Theme.of(context).textTheme.headlineSmall,
@@ -147,8 +135,6 @@ class BodyDetailScreen extends StatelessWidget {
                             .toList(),
                       ),
                       const SizedBox(height: 12),
-
-                      // Drinks Section
                       Text(
                         "Drinks",
                         style: Theme.of(context).textTheme.headlineSmall,

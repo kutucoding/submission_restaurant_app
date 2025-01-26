@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/provider/home/restaurant_list_provider.dart';
-import 'package:restaurant_app/provider/home/restaurant_search_provider.dart';
 import 'package:restaurant_app/screen/home/restaurant_card.dart';
 import 'package:restaurant_app/static/navigation_route.dart';
 import 'package:restaurant_app/static/restaurant_list_result_state.dart';
@@ -45,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(10)),
                   child: Container(
-                    
+
                   )
                 ),
                 const SizedBox(

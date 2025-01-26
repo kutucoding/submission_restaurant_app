@@ -110,7 +110,6 @@ class Menus {
         "drinks": List<dynamic>.from(drinks.map((x) => x.toJson())),
       };
 
-  // Constructor untuk nilai default
   factory Menus.empty() {
     return Menus(
       foods: <Category>[],
