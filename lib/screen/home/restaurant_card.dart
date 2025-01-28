@@ -34,18 +34,15 @@ class RestaurantCard extends StatelessWidget {
                   minHeight: 80,
                   minWidth: 80,
                 ),
-                child: Expanded(
-                  flex: 1,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Hero(
-                      tag: restaurant.pictureId,
-                      child: Image.network(
-                        ApiServices().getImageUrl(restaurant.pictureId),
-                        width: double.infinity,
-                        height: 120,
-                        fit: BoxFit.cover,
-                      ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Hero(
+                    tag: restaurant.pictureId,
+                    child: Image.network(
+                      ApiServices().getImageUrl(restaurant.pictureId),
+                      width: double.infinity,
+                      height: 120,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),

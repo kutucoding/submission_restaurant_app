@@ -4,6 +4,7 @@ import 'package:restaurant_app/provider/setting/theme_provider.dart';
 import 'package:restaurant_app/style/components/box.dart';
 import 'package:restaurant_app/style/components/button.dart';
 
+
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 

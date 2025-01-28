@@ -50,6 +50,26 @@ class BodyDetailScreen extends StatelessWidget {
                             .labelLarge
                             ?.copyWith(fontWeight: FontWeight.w400),
                       ),
+                      Text(
+                        restaurant.address ?? '',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(fontWeight: FontWeight.w400),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Icon(
+                            Icons.star_border_outlined,
+                            color: Colors.yellow,
+                          ),
+                          Text(
+                            restaurant.rating.toString(),
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 15),
                       Text(
                         "Description",

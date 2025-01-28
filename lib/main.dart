@@ -26,11 +26,15 @@ void main() {
               context.read<ApiServices>(),
             )),
     ChangeNotifierProvider(
-        create: (context) =>
-            RestaurantDetailProvider(context.read<ApiServices>())),
+      create: (context) => RestaurantDetailProvider(
+        context.read<ApiServices>(),
+      ),
+    ),
     ChangeNotifierProvider(
-        create: (context) =>
-            RestaurantSearchProvider(context.read<ApiServices>())),
+      create: (context) => RestaurantSearchProvider(
+        context.read<ApiServices>(),
+      ),
+    ),
   ], child: const MyApp()));
 }
 
@@ -70,6 +74,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).themeData,
+      darkTheme: Provider.of<ThemeProvider>(context).themeData,
       initialRoute: NavigationRoute.mainRoute.name,
       routes: {
         NavigationRoute.mainRoute.name: (context) => const MainScreen(),

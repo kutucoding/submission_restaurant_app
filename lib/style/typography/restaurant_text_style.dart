@@ -1,8 +1,7 @@
-import 'dart:ui';
 import 'package:flutter/widgets.dart';
 
 class RestaurantTextStyle {
-  static TextStyle _commonStyle = TextStyle(
+  static const TextStyle _commonStyle = TextStyle(
     fontFamily: 'IBMPlexSansCondensed',
   );
 

@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
         builder: (contex, value, child) {
           return switch (value.indexBottomNavBar) {
             2 => const SettingScreen(),
-            1 => SearchScreen(),
+            1 => const SearchScreen(),
             _ => const HomeScreen(),
           };
         }),

@@ -6,6 +6,8 @@ import 'package:restaurant_app/static/navigation_route.dart';
 import 'package:restaurant_app/static/restaurant_search_resultstate.dart';
 
 class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +60,7 @@ class SearchScreen extends StatelessWidget {
                       ),
                   RestaurantSearchErrorState(message: var message) =>
                       Center(child: Text(message)),
+                  // ignore: unreachable_switch_case
                   _ => const SizedBox.shrink(),
                 };
               },

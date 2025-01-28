@@ -8,7 +8,6 @@ class MyBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       decoration: BoxDecoration(color: color,
       borderRadius: BorderRadius.circular(8)),

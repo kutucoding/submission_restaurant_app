@@ -5,6 +5,9 @@ import 'package:restaurant_app/screen/home/restaurant_card.dart';
 import 'package:restaurant_app/static/navigation_route.dart';
 import 'package:restaurant_app/static/restaurant_list_result_state.dart';
 
+import '../../style/components/image_slider.dart';
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -13,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+   int currentSlider = 0;
   @override
   void initState() {
     Future.microtask(() {
@@ -37,18 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.only(left: 20),
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondary,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Container(
-
-                  )
-                ),
+                ImageSlider(currentSlide: currentSlider, onChange: (value) {
+                  setState(() {
+                    currentSlider = value;
+                  });
+                }),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 //card
               ],

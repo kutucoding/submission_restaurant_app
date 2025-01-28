@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_app/provider/detail/restaurant_detail_provider.dart';
 import 'package:restaurant_app/screen/detail/body_detail_screen.dart';
 import 'package:restaurant_app/static/restaurant_detail_result_state.dart';
-import 'package:restaurant_app/static/restaurant_list_result_state.dart';
 
 class DetailScreen extends StatefulWidget {
   final String restaurantId;
@@ -37,9 +36,12 @@ class _DetailScreenState extends State<DetailScreen> {
         body: Consumer<RestaurantDetailProvider>(
             builder: (context, value, child) {
           return switch (value.resultState) {
-            RestaurantListLoadingState() => const Center(
-                child: CircularProgressIndicator(),
-              ),
+            RestaurantDetailLoadingState() => Container(
+              color: Theme.of(context).colorScheme.secondary,
+              child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+            ),
             RestaurantDetailLoadedState(data: var restaurant) =>
               BodyDetailScreen(restaurant: restaurant),
             RestaurantDetailErrorState(error: var message) => Center(
