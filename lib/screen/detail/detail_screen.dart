@@ -36,12 +36,10 @@ class _DetailScreenState extends State<DetailScreen> {
         body: Consumer<RestaurantDetailProvider>(
             builder: (context, value, child) {
           return switch (value.resultState) {
-            RestaurantDetailLoadingState() => Container(
-              color: Theme.of(context).colorScheme.secondary,
-              child: const Center(
-                  child: CircularProgressIndicator(),
+            RestaurantDetailNoneState() => const SizedBox(),
+            RestaurantDetailLoadingState() => const Center(
+                  child: CircularProgressIndicator(color: Colors.blue),
                 ),
-            ),
             RestaurantDetailLoadedState(data: var restaurant) =>
               BodyDetailScreen(restaurant: restaurant),
             RestaurantDetailErrorState(error: var message) => Center(

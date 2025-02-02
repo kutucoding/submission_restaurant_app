@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_app/provider/home/restaurant_list_provider.dart';
 import 'package:restaurant_app/screen/home/restaurant_card.dart';
 import 'package:restaurant_app/static/navigation_route.dart';
+import 'package:restaurant_app/static/restaurant_detail_result_state.dart';
 import 'package:restaurant_app/static/restaurant_list_result_state.dart';
 
 import '../../style/components/image_slider.dart';
@@ -41,11 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 10),
-                ImageSlider(currentSlide: currentSlider, onChange: (value) {
-                  setState(() {
-                    currentSlider = value;
-                  });
-                }),
+                const ImageSlider(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -68,8 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Consumer<RestaurantListProvider>(
                 builder: (context, value, child) {
               return switch (value.resultState) {
+                RestaurantDetailNoneState() => const SizedBox(),
                 RestaurantListLoadingState() => const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(color: Colors.blue),
                   ),
                 RestaurantListLoadedState(data: var restaurantList) =>
                   ListView.builder(
