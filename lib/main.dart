@@ -1,18 +1,31 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_app/data/api/api_services.dart';
-import 'package:restaurant_app/provider/detail/restaurant_detail_provider.dart';
-import 'package:restaurant_app/provider/home/image_slider_provider.dart';
-import 'package:restaurant_app/provider/home/restaurant_list_provider.dart';
-import 'package:restaurant_app/provider/home/restaurant_search_provider.dart';
-import 'package:restaurant_app/provider/main/index_nav_provider.dart';
-import 'package:restaurant_app/provider/setting/theme_provider.dart';
-import 'package:restaurant_app/screen/detail/detail_screen.dart';
-import 'package:restaurant_app/screen/main/main_screen.dart';
-import 'package:restaurant_app/static/navigation_route.dart';
+import 'package:restaurant_app/src/services/api/api_services.dart';
+import 'package:restaurant_app/src/services/local/local_database.dart';
+import 'package:restaurant_app/src/provider/detail/restaurant_detail_provider.dart';
+import 'package:restaurant_app/src/provider/home/image_slider_provider.dart';
+import 'package:restaurant_app/src/provider/home/restaurant_list_provider.dart';
+import 'package:restaurant_app/src/provider/home/restaurant_search_provider.dart';
+import 'package:restaurant_app/src/provider/local/local_database_provider.dart';
+import 'package:restaurant_app/src/provider/main/index_nav_provider.dart';
+import 'package:restaurant_app/src/provider/setting/theme_provider.dart';
+import 'package:restaurant_app/src/screen/detail/detail_screen.dart';
+import 'package:restaurant_app/src/screen/main/main_screen.dart';
+import 'package:restaurant_app/config/static/navigation_route.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MultiProvider(providers: [
+    Provider(
+      create: (context) => LocalDatabase(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => LocalDatabaseProvider(
+        context.read<LocalDatabase>(),
+      ),
+    ),
     Provider(
       create: (context) => ApiServices(),
     ),
@@ -85,7 +98,7 @@ class _MyAppState extends State<MyApp> {
         NavigationRoute.detailRoute.name: (context) => DetailScreen(
               restaurantId:
                   ModalRoute.of(context)?.settings.arguments as String,
-            )
+            ),
       },
     );
   }
