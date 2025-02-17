@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:restaurant_app/src/services/local/local_database.dart';
-import 'package:restaurant_app/src/services/model/restaurant_model.dart';
+import 'package:restaurant_app/src/data/local/local_database.dart';
+import 'package:restaurant_app/src/data/model/restaurant_model.dart';
 
 class LocalDatabaseProvider extends ChangeNotifier{
   final LocalDatabase _service;

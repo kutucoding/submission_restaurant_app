@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/src/services/api/api_services.dart';
-import 'package:restaurant_app/src/services/model/restaurant_model.dart';
+import 'package:restaurant_app/src/data/api/api_services.dart';
+import 'package:restaurant_app/src/data/model/restaurant_model.dart';
 
 class SearchCard extends StatelessWidget {
   final Restaurant restaurant;

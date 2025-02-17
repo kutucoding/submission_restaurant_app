@@ -1,14 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/src/screen/setting/notification_screen.dart';
+
+import 'package:restaurant_app/src/screen/setting/notification_setting_screen.dart';
 import 'package:restaurant_app/src/screen/setting/theme_screen.dart';
+import 'package:restaurant_app/src/services/local_notification_service.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+  const SettingScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {
+    final service = LocalNotificationService(); 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Setting'),
@@ -25,7 +28,7 @@ class SettingScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => NotificationScreen(),
+                    builder: (context) => NotificationSettingsScreen(service: service),
                   ),
                 );
               },

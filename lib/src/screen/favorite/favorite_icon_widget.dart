@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_app/src/provider/favorite/favorite_icon_provider.dart';
 import 'package:restaurant_app/src/provider/local/local_database_provider.dart';
 
-import '../../services/model/restaurant_model.dart';
+import '../../data/model/restaurant_model.dart';
 
 class FavoriteIconWidget extends StatefulWidget {
   final Restaurant restaurant;
