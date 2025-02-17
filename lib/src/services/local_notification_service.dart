@@ -180,6 +180,7 @@ class LocalNotificationService {
     channelName,
     importance: Importance.max,
     priority: Priority.high,
+    sound: const RawResourceAndroidNotificationSound('meal_reminder'),
     ticker: 'ticker',
   );
   const iOSPlatformChannelSpecifics = DarwinNotificationDetails();

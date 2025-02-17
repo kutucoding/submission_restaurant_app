@@ -53,10 +53,11 @@ class LocalNotificationProvider extends ChangeNotifier {
 
       service.scheduleDailyNotification(
         id: 1,
-        title: 'Reminder',
-        body: 'This is your reminder!',
+        title: 'Hai 👋, Udah makan?',
+        body: 'Yuk makan, nanti sakit loh 😉',
         hour: hour,
         minute: minute,
+        
       );
     } else {
       service.cancelNotification(1);
