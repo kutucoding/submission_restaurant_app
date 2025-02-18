@@ -26,8 +26,16 @@ class RestaurantDetailProvider extends ChangeNotifier {
         notifyListeners();
       }
     } on Exception catch (err) {
-      _resultState = RestaurantDetailErrorState(err.toString());
-      notifyListeners();
+     String errorMessage;
+
+     if(err.toString().contains('SocketException')) {
+      errorMessage = "Gagal Menampilkan Detail Restaurant. Periksa koneksi internet anda.";
+     } else {
+      errorMessage = "Terjadi kesalahan. silahkan coba lagi.";
+     }
+
+     _resultState = RestaurantDetailErrorState(errorMessage);
+     notifyListeners();
     }
   }
 }

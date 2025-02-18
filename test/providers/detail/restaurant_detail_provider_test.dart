@@ -66,7 +66,7 @@ void main() {
     test(
         'Should return RestaurantDetailErrorState when API call throws exception',
         () async {
-      const errorMessage = 'Network error';
+      const errorMessage = 'Terjadi kesalahan. silahkan coba lagi.';
       when(() => mockApiServices.getRestaurantDetail(testId))
           .thenThrow(Exception(errorMessage));
 
@@ -74,7 +74,7 @@ void main() {
 
       expect(provider.resultState, isA<RestaurantDetailErrorState>());
       expect((provider.resultState as RestaurantDetailErrorState).error,
-          'Exception: $errorMessage');
+          '$errorMessage');
     });
   });
 }

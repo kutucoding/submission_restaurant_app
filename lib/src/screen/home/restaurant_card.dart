@@ -39,6 +39,9 @@ class RestaurantCard extends StatelessWidget {
                   child: Hero(
                     tag: restaurant.pictureId,
                     child: Image.network(
+                      errorBuilder:(context, error, stackTrace) {
+                        return const Icon(Icons.error_outline);
+                      },
                       ApiServices().getImageUrl(restaurant.pictureId),
                       width: double.infinity,
                       height: 120,

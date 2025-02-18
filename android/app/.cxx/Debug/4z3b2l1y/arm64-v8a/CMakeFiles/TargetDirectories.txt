@@ -1,0 +1,2 @@
+C:/Development/submission_idcamp1/restaurant_app/android/app/.cxx/Debug/4z3b2l1y/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Development/submission_idcamp1/restaurant_app/android/app/.cxx/Debug/4z3b2l1y/arm64-v8a/CMakeFiles/rebuild_cache.dir
