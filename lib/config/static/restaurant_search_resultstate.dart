@@ -1,8 +1,6 @@
 import 'package:restaurant_app/src/data/model/restaurant_model.dart';
 
-sealed class RestaurantSearchResultstate {
-
-}
+sealed class RestaurantSearchResultstate {}
 
 class RestaurantSearchNoneState extends RestaurantSearchResultstate {}
 
@@ -16,6 +14,6 @@ class RestaurantSearchLoadedState extends RestaurantSearchResultstate {
 
 class RestaurantSearchErrorState extends RestaurantSearchResultstate {
   final String message;
-  
+
   RestaurantSearchErrorState(this.message);
 }

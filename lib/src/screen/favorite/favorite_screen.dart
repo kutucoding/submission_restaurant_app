@@ -1,6 +1,3 @@
-
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/src/provider/local/local_database_provider.dart';
@@ -15,10 +12,10 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
-
   @override
   void initState() {
     Future.microtask(() {
+      // ignore: use_build_context_synchronously
       context.read<LocalDatabaseProvider>().loadAllRestaurant();
     });
     super.initState();
@@ -28,31 +25,32 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Restaurant List"),
+        title: const Text("Restaurant List"),
       ),
-      body: Consumer<LocalDatabaseProvider>(builder: (context, value, child){
+      body: Consumer<LocalDatabaseProvider>(builder: (context, value, child) {
         final restaurantList = value.restaurantList ?? [];
         return switch (restaurantList.isNotEmpty) {
           true => ListView.builder(
-            itemCount: restaurantList.length,
-            itemBuilder: (context, index){
-              final restaurant = restaurantList[index];
+              itemCount: restaurantList.length,
+              itemBuilder: (context, index) {
+                final restaurant = restaurantList[index];
 
-              return RestaurantCard(
-                restaurant: restaurant, 
-                onTap: () {
-                  Navigator.pushNamed(context, NavigationRoute.detailRoute.name,
-                  arguments: restaurant.id);
-                });
-            },
+                return RestaurantCard(
+                    restaurant: restaurant,
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, NavigationRoute.detailRoute.name,
+                          arguments: restaurant.id);
+                    });
+              },
             ),
-            _ => const Center(
+          _ => const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [Text("No Favorite Restaurant")],
               ),
             )
-        } ;
+        };
       }),
     );
   }

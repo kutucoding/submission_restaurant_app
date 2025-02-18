@@ -15,7 +15,7 @@ class Restaurant {
         name: json["name"] ?? '',
         description: json["description"] ?? '',
         city: json["city"] ?? '',
-        address: json["address"], 
+        address: json["address"],
         pictureId: json["pictureId"] ?? '',
         categories: (json["categories"] != null
             ? List<Category>.from(
@@ -23,7 +23,7 @@ class Restaurant {
             : <Category>[]),
         menus: json["menus"] != null
             ? Menus.fromJson(json["menus"])
-            : Menus.empty(), 
+            : Menus.empty(),
         rating: (json["rating"]?.toDouble()) ?? 0.0,
         customerReviews: (json["customerReviews"] != null
             ? List<CustomerReview>.from(
@@ -31,19 +31,17 @@ class Restaurant {
             : <CustomerReview>[]),
       );
 
-      Map<String, dynamic> toJson() {
-        return<String, dynamic>{
-          "id": id,
-          "name": name,
-          "description": description,
-          "city": city,
-          "address": address,
-          "rating": rating,
-          "pictureId": pictureId,
-        };
-      }
-
-      
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      "id": id,
+      "name": name,
+      "description": description,
+      "city": city,
+      "address": address,
+      "rating": rating,
+      "pictureId": pictureId,
+    };
+  }
 
   Restaurant({
     required this.id,

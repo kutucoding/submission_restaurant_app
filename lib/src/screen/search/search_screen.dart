@@ -20,7 +20,9 @@ class SearchScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: TextField(
               onChanged: (query) {
-                context.read<RestaurantSearchProvider>().fetchRestaurantSearch(query);
+                context
+                    .read<RestaurantSearchProvider>()
+                    .fetchRestaurantSearch(query);
               },
               decoration: InputDecoration(
                 labelText: "Search",
@@ -45,21 +47,21 @@ class SearchScreen extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     ),
                   RestaurantSearchLoadedState(restaurants: var restaurants) =>
-                      ListView.builder(
-                        itemCount: restaurants.length,
-                        itemBuilder: (context, index) {
-                          final restaurant = restaurants[index];
-                          return SearchCard(
+                    ListView.builder(
+                      itemCount: restaurants.length,
+                      itemBuilder: (context, index) {
+                        final restaurant = restaurants[index];
+                        return SearchCard(
                             onTap: () {
-                              Navigator.pushNamed(context, 
-                              NavigationRoute.detailRoute.name,
-                              arguments: restaurant.id);
-                            }, 
+                              Navigator.pushNamed(
+                                  context, NavigationRoute.detailRoute.name,
+                                  arguments: restaurant.id);
+                            },
                             restaurant: restaurant);
-                        },
-                      ),
+                      },
+                    ),
                   RestaurantSearchErrorState(message: var message) =>
-                      Center(child: Text(message)),
+                    Center(child: Text(message)),
                   // ignore: unreachable_switch_case
                   _ => const SizedBox.shrink(),
                 };

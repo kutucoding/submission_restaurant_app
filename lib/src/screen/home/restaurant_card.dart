@@ -21,8 +21,7 @@ class RestaurantCard extends StatelessWidget {
             boxShadow: const [
               BoxShadow(
                   color: Colors.black26, blurRadius: 6, offset: Offset(0, 3))
-            ]
-            ),
+            ]),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
           child: Row(

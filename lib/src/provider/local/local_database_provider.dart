@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:restaurant_app/src/data/local/local_database.dart';
 import 'package:restaurant_app/src/data/model/restaurant_model.dart';
 
-class LocalDatabaseProvider extends ChangeNotifier{
+class LocalDatabaseProvider extends ChangeNotifier {
   final LocalDatabase _service;
 
   LocalDatabaseProvider(this._service);
@@ -17,7 +17,7 @@ class LocalDatabaseProvider extends ChangeNotifier{
   Restaurant? get restaurant => _restaurant;
 
   Future<void> saveRestaurant(Restaurant value) async {
-    try{
+    try {
       final result = await _service.insertItem(value);
 
       final isError = result == 0;
@@ -30,7 +30,7 @@ class LocalDatabaseProvider extends ChangeNotifier{
       _message = "Failed to save your data";
     }
     notifyListeners();
-  } 
+  }
 
   Future<void> loadAllRestaurant() async {
     try {
@@ -45,7 +45,7 @@ class LocalDatabaseProvider extends ChangeNotifier{
   }
 
   Future<void> loadRestaurantById(String id) async {
-    try{
+    try {
       _restaurant = await _service.getItemById(id);
       _message = "Your data is loaded";
       notifyListeners();
@@ -68,6 +68,7 @@ class LocalDatabaseProvider extends ChangeNotifier{
   }
 
   bool checkItemFavorite(int id) {
+    // ignore: unrelated_type_equality_checks
     final isSameRestaurant = _restaurant!.id == id;
     return isSameRestaurant;
   }

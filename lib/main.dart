@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/src/data/api/api_services.dart';
@@ -22,8 +21,8 @@ void main() {
   runApp(MultiProvider(providers: [
     Provider(
       create: (context) => LocalNotificationService()
-      ..init()
-      ..configureLocalTimeZone(),
+        ..init()
+        ..configureLocalTimeZone(),
     ),
     ChangeNotifierProvider(
       create: (context) => LocalNotificationProvider(
@@ -76,7 +75,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late final AppLifecycleListener _listener;
-  // This widget is the root of your application.
 
   @override
   void initState() {

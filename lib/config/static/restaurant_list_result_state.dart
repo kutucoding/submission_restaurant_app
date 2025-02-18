@@ -1,12 +1,10 @@
 import 'package:restaurant_app/src/data/model/restaurant_model.dart';
 
-sealed class RestaurantListResultState{
+sealed class RestaurantListResultState {}
 
-}
+class RestaurantListNoneState extends RestaurantListResultState {}
 
-class RestaurantListNoneState extends RestaurantListResultState{}
-
-class RestaurantListLoadingState extends RestaurantListResultState{}
+class RestaurantListLoadingState extends RestaurantListResultState {}
 
 class RestaurantListErrorState extends RestaurantListResultState {
   final String error;
@@ -14,7 +12,7 @@ class RestaurantListErrorState extends RestaurantListResultState {
   RestaurantListErrorState(this.error);
 }
 
-class RestaurantListLoadedState extends RestaurantListResultState{
+class RestaurantListLoadedState extends RestaurantListResultState {
   final List<Restaurant> data;
 
   RestaurantListLoadedState(this.data);

@@ -25,6 +25,7 @@ class ApiServices {
       throw Exception("Failed to Load Restaurant Detail");
     }
   }
+
   Future<List<Restaurant>> getSearchRestaurant(String query) async {
     final response = await http.get(Uri.parse("$_baseUrl/search?q=$query"));
 
@@ -41,5 +42,4 @@ class ApiServices {
   String getImageUrl(String pictureId) {
     return "$_baseUrl/images/large/$pictureId";
   }
-  
 }

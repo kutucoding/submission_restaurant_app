@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class IndexNavProvider extends ChangeNotifier{
+class IndexNavProvider extends ChangeNotifier {
   int _indexButtomNavBar = 0;
 
   int get indexBottomNavBar => _indexButtomNavBar;

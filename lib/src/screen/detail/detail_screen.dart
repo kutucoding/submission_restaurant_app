@@ -58,6 +58,7 @@ class _DetailScreenState extends State<DetailScreen> {
             RestaurantDetailErrorState(error: var message) => Center(
                 child: Text(message),
               ),
+            // ignore: unreachable_switch_case
             _ => const SizedBox()
           };
         }));

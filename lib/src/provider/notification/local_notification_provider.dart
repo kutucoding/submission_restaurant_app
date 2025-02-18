@@ -7,15 +7,19 @@ class LocalNotificationProvider extends ChangeNotifier {
 
   LocalNotificationProvider(this.flutterNotificationService);
 
-  int _notificationId = 0;
   bool? _permisson = false;
   bool? get permission => _permisson;
 
   List<PendingNotificationRequest> pendingNotificationRequest = [];
 
-  // mind blowing
-
-  final List<String> availableTimes = ['10:00', '11:00', '12:00', '13:00', '14,00', '15:00'];
+  final List<String> availableTimes = [
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14,00',
+    '15:00'
+  ];
   String _selectedTime = '10:00';
   bool _isNotificationEnabled = false;
 
@@ -27,18 +31,7 @@ class LocalNotificationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> showNotification() async {
-    _notificationId += 1;
-    flutterNotificationService.showNotification(
-      id: _notificationId,
-      title: "New Notification",
-      body: "This is a new Notification with id $_notificationId",
-    );
-  }
-
-  // mindblowing
-
-   void setSelectedTime(String time) {
+  void setSelectedTime(String time) {
     _selectedTime = time;
     notifyListeners();
   }
@@ -57,7 +50,6 @@ class LocalNotificationProvider extends ChangeNotifier {
         body: 'Yuk makan, nanti sakit loh 😉',
         hour: hour,
         minute: minute,
-        
       );
     } else {
       service.cancelNotification(1);
@@ -66,22 +58,12 @@ class LocalNotificationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // fungsi untuk eksekusi notifikasi terjadwal
-  // void scheduleDailyElevenAMNotification() {
-  //   _notificationId += 1;
-  //   flutterNotificationService.scheduleDailyTenAMNotification(
-  //    id: _notificationId,
-  //  );
-  // }
-
-  // fungsi untuk mencatat notifikasi terjadwal
   Future<void> checkPendingNotificationRequests(BuildContext context) async {
     pendingNotificationRequest =
         await flutterNotificationService.pendingNotificationRequest();
     notifyListeners();
   }
 
-  // fungsi untuk mencancel notifikasi terjadwal
   Future<void> cancelNotification(int id) async {
     await flutterNotificationService.cancelNotification(id);
   }
