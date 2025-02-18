@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:restaurant_app/src/services/local_notification_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalNotificationProvider extends ChangeNotifier {
   final LocalNotificationService flutterNotificationService;
+  late SharedPreferences _prefs;
 
-  LocalNotificationProvider(this.flutterNotificationService);
+  LocalNotificationProvider(this.flutterNotificationService) {
+    _loadPreferences();
+  }
 
   bool? _permisson = false;
   bool? get permission => _permisson;
@@ -20,24 +24,32 @@ class LocalNotificationProvider extends ChangeNotifier {
     '14,00',
     '15:00'
   ];
-  String _selectedTime = '10:00';
+  String _selectedTime = '11:00';
   bool _isNotificationEnabled = false;
 
   String get selectedTime => _selectedTime;
   bool get isNotificationEnabled => _isNotificationEnabled;
+
+  Future<void> _loadPreferences() async {
+    _prefs = await SharedPreferences.getInstance();
+    _selectedTime = _prefs.getString('selectedTime') ?? '11:00';
+    _isNotificationEnabled = _prefs.getBool('isNotificationEnabled') ?? false;
+  }
 
   Future<void> requestPermission() async {
     _permisson = await flutterNotificationService.requestPermissions();
     notifyListeners();
   }
 
-  void setSelectedTime(String time) {
+  void setSelectedTime(String time) async{
     _selectedTime = time;
+    await _prefs.setString('selectedTime', time);
     notifyListeners();
   }
 
-  void toggleNotification(bool isEnabled, LocalNotificationService service) {
+  void toggleNotification(bool isEnabled, LocalNotificationService service) async {
     _isNotificationEnabled = isEnabled;
+    await _prefs.setBool('isNotificationEnabled', isEnabled);
 
     if (isEnabled) {
       final parts = _selectedTime.split(':');
